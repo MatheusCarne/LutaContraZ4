@@ -541,3 +541,89 @@ tr.zona-rebaixamento td:first-child { border-left: 4px solid #ef4444; font-weigh
     font-size: 0.76rem;
     color: #94a3b8;
 }
+
+/* Botão Gerar Card */
+#btn-card {
+    background-color: #6b21a8;
+    color: #f3e8ff;
+    border: 1px solid #9333ea;
+    padding: 7px 13px;
+    font-size: 0.82rem;
+}
+
+#btn-card:hover {
+    background-color: #7e22ce;
+    color: #ffffff;
+}
+
+/* Área de Captura e Marca d'água (visível apenas no PNG exportado) */
+#area-captura-card.modo-exportacao {
+    background-color: #0f172a;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+.marca-dagua-card {
+    display: none;
+    text-align: right;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #1e293b;
+}
+
+#area-captura-card.modo-exportacao .marca-dagua-card {
+    display: block;
+}
+
+/* Rodapé Editorial */
+.rodape-editorial {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.84rem;
+    color: #94a3b8;
+}
+
+.rodape-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.link-repo {
+    color: #a855f7;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-repo:hover {
+    text-decoration: underline;
+    color: #c084fc;
+}
+
+.rodape-redes {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.rodape-redes a {
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rodape-redes a:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
