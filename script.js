@@ -533,18 +533,6 @@ function renderizarTermometroMomento(tabela, mapaUltimos5) {
             </div>
             <span class="termometro-info">${piorSequencia.pontosUltimos5} de 15 pts disputados (${Math.round((piorSequencia.pontosUltimos5 / 15) * 100)}%)</span>
         </div>
-
-        <div class="item-termometro corte">
-            <span class="termometro-rotulo">⚔️ Linha de Corte Atual (16º)</span>
-            <div class="termometro-linha">
-                <div class="termometro-time">
-                    <img src="${infoCorte.escudo}" alt="" style="width: 18px;">
-                    <span>${infoCorte.nome}</span>
-                </div>
-                <strong style="font-size: 0.9rem; color: #e9d5ff;">${decimoSexto.points} pts</strong>
-            </div>
-            <span class="termometro-info">Saldo: ${decimoSexto.goalDifference} • Faltam ${jogosRestantesCorte} jogo(s)</span>
-        </div>
     `;
 }
 
