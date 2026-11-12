@@ -22,6 +22,7 @@
     <meta name="twitter:image" content="https://matheuscarne.github.io/LutaContraZ4/logo-brasileirao.png">
 
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
@@ -54,26 +55,19 @@
 
             <div class="acoes-header">
                 <button id="btn-simular" onclick="alternarModoSimulacao()">✏️ Modo Simulação</button>
-                <button id="btn-card" onclick="gerarCardImagem()">📸 Gerar Card</button>
                 <button id="btn-atualizar" onclick="carregarBrasileiraoAtual(true)">↻ Atualizar Agora</button>
             </div>
         </div>
     </header>
 
-    <!-- Área capturada pelo Gerar Card -->
-    <div id="area-captura-card">
-        <section class="secao-radar">
-            <div class="radar-header">
-                <h2>Radar do Z4 Agora <span class="sub-radar">(17º ao 20º colocados • Meta de segurança: 45 pts)</span></h2>
-            </div>
-            <div id="cards-z4" class="grid-cards-z4">
-                <!-- Os 4 cards do Z4 serão renderizados aqui pelo script.js -->
-            </div>
-        </section>
-        <div id="marca-dagua-card" class="marca-dagua-card">
-            Simulado em tempo real • <strong>matheuscarne.github.io/LutaContraZ4</strong>
+    <section class="secao-radar">
+        <div class="radar-header">
+            <h2>Radar do Z4 Agora <span class="sub-radar">(17º ao 20º colocados • Meta de segurança: 45 pts)</span></h2>
         </div>
-    </div>
+        <div id="cards-z4" class="grid-cards-z4">
+            <!-- Os 4 cards do Z4 serão renderizados aqui pelo script.js -->
+        </div>
+    </section>
 
     <main class="container-principal">
         <!-- Coluna da Esquerda: Jogos da Rodada + Termômetro -->
