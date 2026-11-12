@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasileirão Ao Vivo — Luta Contra o Z4 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header-editorial">
+        <div class="header-identidade">
+            <img src="logo-brasileirao.png" alt="Brasileirão Série A" class="logo-brasileirao">
+            <div>
+                <h1>Quem vai cair? <span class="destaque-titulo">Tempo Real 2026</span></h1>
+                <p id="status-atualizacao">Sincronizando dados da rodada...</p>
+            </div>
+        </div>
+
+        <div class="acoes-header">
+            <button id="btn-simular" onclick="alternarModoSimulacao()">✏️ Modo Simulação</button>
+            <button id="btn-atualizar" onclick="carregarBrasileiraoAtual(true)">↻ Atualizar Agora</button>
+        </div>
+    </header>
+
+    <!-- 4 Cards de Destaque: Radar do Z4 no momento -->
+    <section class="secao-radar">
+        <div class="radar-header">
+            <h2>Radar do Z4 Agora <span class="sub-radar">(17º ao 20º colocados • Linha de corte: 45 pts)</span></h2>
+        </div>
+        <div id="cards-z4" class="grid-cards-z4">
+            <!-- Os 4 cards do Z4 serão renderizados aqui pelo script.js -->
+        </div>
+    </section>
+
+    <main class="container-principal">
+        <!-- Coluna da Esquerda: Jogos da Rodada -->
+        <!-- Coluna da Esquerda: Jogos da Rodada + Termômetro -->
+        <section class="coluna-jogos">
+            <div class="titulo-secao">
+                <h2>Jogos da Rodada</h2>
+                <div class="filtros">
+                    <button id="filtro-todos" class="btn-filtro ativo" onclick="alternarFiltroZ4(false)">Todos</button>
+                    <button id="filtro-z4" class="btn-filtro" onclick="alternarFiltroZ4(true)">🔥 Foco Z4</button>
+                </div>
+            </div>
+            <div id="lista-jogos">
+                <!-- Cards dos jogos -->
+            </div>
+
+            <!-- Novo bloco: Termômetro de Momento da Parte de Baixo -->
+            <div id="termometro-z4" class="painel-termometro">
+                <!-- Preenchido automaticamente pelo script.js -->
+            </div>
+        </section>
+
+        <!-- Coluna da Direita: Tabela em Tempo Real -->
+        <section class="coluna-tabela">
+            <div class="titulo-secao">
+                <h2>Classificação em Tempo Real</h2>
+            </div>
+            <div class="tabela-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Time</th>
+                            <th>P</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>SG</th>
+                            <th title="Aproveitamento de pontos">%</th>
+                            <th title="Pontuação máxima possível até a 38ª rodada">Max</th>
+                            <th>Últimos 5</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+                        <!-- Linhas da tabela -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Legenda -->
+            <div class="legenda-tabela">
+                <div class="legenda-item"><span class="cor-box" style="background: #3b82f6;"></span> Libertadores (1º-4º)</div>
+                <div class="legenda-item"><span class="cor-box" style="background: #06b6d4;"></span> Pré-Libertadores (5º)</div>
+                <div class="legenda-item"><span class="cor-box" style="background: #22c55e;"></span> Sul-Americana (6º-11º)</div>
+                <div class="legenda-item"><span class="cor-box" style="background: #ef4444;"></span> Rebaixamento (17º-20º)</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
