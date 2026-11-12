@@ -1,0 +1,61 @@
+name: Atualizar Dados Brasileirão
+
+on:
+  workflow_dispatch: # Permite rodar manualmente na aba Actions a qualquer momento
+  schedule:
+    # Roda a cada 5 minutos nos horários de jogos (terças, quartas, quintas, sábados e domingos - horário UTC)
+    - cron: '*/5 18-23 * * 0,2,3,4,6'
+    - cron: '*/5 0-3 * * 0,1,3,4,5'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Consultar Football-Data.org e gerar dados.json
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const headers = { "X-Auth-Token": process.env.FOOTBALL_API_KEY };
+            const base = "https://api.football-data.org/v4/competitions/BSA";
+
+            async function run() {
+              const resTab = await fetch(`${base}/standings`, { headers });
+              if (!resTab.ok) throw new Error("Erro standings: " + resTab.status);
+              const jsonTab = await resTab.json();
+              const rodada = jsonTab.season.currentMatchday;
+
+              const resJog = await fetch(`${base}/matches?matchday=${rodada}`, { headers });
+              if (!resJog.ok) throw new Error("Erro matches rodada: " + resJog.status);
+              const jsonJog = await resJog.json();
+
+              const resFin = await fetch(`${base}/matches?status=FINISHED`, { headers });
+              const jsonFin = resFin.ok ? await resFin.json() : { matches: [] };
+
+              const payload = {
+                atualizadoEm: Date.now(),
+                rodada,
+                tabela: jsonTab.standings[0].table,
+                partidas: jsonJog.matches,
+                finalizados: jsonFin.matches || []
+              };
+
+              fs.writeFileSync("dados.json", JSON.stringify(payload));
+              console.log("dados.json gerado com sucesso para a rodada " + rodada);
+            }
+            run();
+          '
+
+      - name: Publicar dados.json atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: atualiza placares da rodada" && git push)
